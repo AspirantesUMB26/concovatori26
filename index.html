@@ -1,366 +1,347 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Inicia tu proceso de pre-registro en la Universidad Mexiquense del Bicentenario (UMB). Consulta nuestra oferta educativa en 36 planteles del Estado de México.">
-    <title>Admisiones UMB - Universidad Mexiquense del Bicentenario</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <title>Oferta Educativa | Universidad Mexiquense del Bicentenario</title>
+    <meta name="description"
+        content="Explora la oferta educativa de la UMB. 21 carreras profesionales diseñadas para el éxito laboral.">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        :root {
-            --guinda: #691c32; 
-            --oro: #bc955c;   
-            --oro-dark: #a6834d;
-            --texto: #333;
-            --gris-linea: #ddd;
-            --gris-fondo: #f8f9fa;
-            --blanco: #ffffff;
-            --exito: #2e7d32;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--texto);
-            background-color: var(--gris-fondo);
-            overflow-x: hidden;
-        }
-
-        /* --- Header --- */
-        header {
-            background: #fff;
-            padding: 0.6rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .brand { display: flex; align-items: center; gap: 15px; }
-        .logo-umb { height: 50px; width: auto; }
-
-        .nav-menu { display: flex; gap: 20px; align-items: center; }
-        .nav-link { text-decoration: none; color: var(--texto); font-weight: 600; font-size: 0.85rem; transition: color 0.3s; }
-        .nav-link:hover { color: var(--guinda); }
-
-        .btn-pre {
-            background: var(--guinda);
-            color: white;
-            padding: 0.6rem 1.4rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            transition: opacity 0.3s;
-        }
-        .btn-pre:hover { opacity: 0.9; }
-
-        .quick-info {
-            background: var(--guinda);
-            color: white;
+        .category-tabs {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            padding: 15px;
-            text-align: center;
+            gap: var(--space-4);
+            margin-bottom: var(--space-12);
         }
 
-        .info-item { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 0.9rem; }
-        .info-item span { color: var(--oro); font-size: 1.2rem; }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 450px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-
-        /* --- Form Container --- */
-        .overlap-container {
-            position: relative;
-            z-index: 10;
-            margin-top: -100px; 
-            display: flex;
-            justify-content: center;
-            padding: 0 20px;
-            margin-bottom: 60px;
-        }
-
-        .form-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
-            width: 100%;
-            max-width: 550px;
-        }
-
-        .form-card h2 {
-            color: var(--guinda);
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-left: 5px solid var(--oro);
-            padding-left: 15px;
-        }
-
-        /* --- Inputs --- */
-        .form-group { margin-bottom: 1.2rem; }
-        
-        label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 0.9rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            font-family: inherit;
-            background: #fff;
-            font-size: 0.95rem;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--oro);
-            box-shadow: 0 0 0 2px rgba(188, 149, 92, 0.2);
-        }
-
-        .btn-submit {
-            background: var(--oro);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 1.1rem;
-            font-weight: 700;
-            text-transform: uppercase;
+        .tab-btn {
+            padding: var(--space-3) var(--space-8);
+            border-radius: var(--radius-full);
+            border: 2px solid var(--guinda-primary);
+            background: transparent;
+            color: var(--guinda-primary);
+            font-weight: var(--font-bold);
             cursor: pointer;
-            border-radius: 6px;
-            transition: 0.3s;
-            margin-top: 1rem;
+            transition: all var(--transition-base);
         }
 
-        .btn-submit:hover { background: var(--oro-dark); }
-        .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
-
-        #mensajeExito {
-            display: none;
-            color: var(--exito);
-            margin-top: 15px;
-            font-weight: 600;
-            text-align: center;
-            background: #e8f5e9;
-            padding: 10px;
-            border-radius: 4px;
-        }
-
-        /* --- Footer --- */
-        footer {
-            background: var(--guinda);
+        .tab-btn.active {
+            background: var(--guinda-primary);
             color: white;
-            text-align: center;
-            padding: 3rem 20px;
-        }
-
-        footer a { color: var(--oro); text-decoration: none; }
-
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .quick-info { flex-direction: column; gap: 10px; }
-            .hero h1 { font-size: 1.8rem; }
-            .form-card { padding: 1.5rem; }
         }
     </style>
 </head>
+
 <body>
-
-    <header>
-        <div class="brand">
-            <img src="https://raw.githubusercontent.com/ismaelumb/MAPA-UMB/refs/heads/main/Logotipo%20UMB%20-%20copia.png" alt="Logo UMB" class="logo-umb">
+    <!-- HEADER -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="navbar-logo">
+                <span style="font-weight: 800;">UMB</span>
+                <span style="font-size: var(--text-sm); font-weight: 400; color: var(--gris-secundario);">| Gobierno del
+                    Estado de México</span>
+            </div>
+            <ul class="navbar-links">
+                <li><a href="index.html" class="navbar-link">Inicio</a></li>
+                <li><a href="https://umb.edomex.gob.mx" class="navbar-link">Sitio Oficial</a></li>
+            </ul>
         </div>
-        <nav class="nav-menu">
-            <a href="Mapa2.html" class="nav-link">Nuestros Planteles</a>
-            <a href="#registro" class="btn-pre">Pre-registro</a>
-        </nav>
-    </header>
+    </nav>
 
-    <div class="quick-info">
-        <div class="info-item"><span>📍</span> 36 Unidades de Estudios</div>
-        <div class="info-item"><span>🎓</span> Oferta Educativa Regional</div>
-    </div>
+    <!-- HERO -->
+    <section class="hero"
+        style="background: linear-gradient(135deg, rgba(133, 24, 42, 0.95), rgba(86, 16, 27, 0.9)), url('C:/Users/UMB/.gemini/antigravity/brain/77a97b2c-f0dd-4c5f-9b3e-5e18b17a4328/umb_careers_exploration_1769706482367.webp'); background-size: cover; background-position: center;">
+        <div class="hero-content">
+            <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem);">Tu Futuro Comienza Aquí</h1>
+            <p style="font-size: var(--text-xl); max-width: 800px; margin: 0 auto var(--space-10);">
+                Conoce nuestra oferta de 21 licenciaturas e ingenierías diseñadas para formar líderes globales.
+            </p>
+            <a href="#carreras" class="btn btn-primary" style="padding: var(--space-4) var(--space-12);">Ver
+                Carreras</a>
+        </div>
+    </section>
 
-    <main>
-        <section class="hero">
-            <h1>Inicia tu Proceso de Admisión</h1>
-            <p>Selecciona tu plantel más cercano y descubre tu carrera ideal.</p>
-        </section>
+    <!-- OFERTA EDUCATIVA -->
+    <section id="carreras" class="section container">
+        <h2 class="section-title">Oferta Educativa 2026</h2>
 
-        <div class="overlap-container">
-            <div class="form-card" id="registro">
-                <h2>Solicita Información</h2>
-                <form id="umbForm">
-                    <div class="form-group">
-                        <label for="nombre">Nombre Completo</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez López" required>
-                    </div>
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterCarreras('all')">Todas</button>
+            <button class="tab-btn" onclick="filterCarreras('lic')">Licenciaturas</button>
+            <button class="tab-btn" onclick="filterCarreras('ing')">Ingenierías</button>
+        </div>
 
-                    <div class="form-group">
-                        <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com" required>
-                    </div>
+        <div class="grid grid-3" id="carreras-container" style="gap: var(--space-8);">
+            <!-- Licenciaturas -->
+            <div class="card career-card lic">
+                <div
+                    style="background: #e3f2fd; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    ⚖️</div>
+                <h3>Derecho</h3>
+                <p>Justicia y ética para la sociedad</p>
+                <a href="#" class="btn btn-secondary mt-4" style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
 
-                    <div class="form-group">
-                        <label for="telefono">Número de Teléfono</label>
-                        <input type="tel" id="telefono" name="telefono" placeholder="10 dígitos" required pattern="[0-9]{10}" title="Ingresa un número válido de 10 dígitos">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="uesSelect">1. Selecciona tu Plantel (UES):</label>
-                        <select id="uesSelect" name="plantel" required>
-                            <option value="">-- Elige una UES --</option>
-                        </select>
-                    </div>
+            <div class="card career-card lic">
+                <div
+                    style="background: #f3e5f5; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🧠</div>
+                <h3>Psicología</h3>
+                <p>Comprensión profunda del ser humano</p>
+                <a href="#" class="btn btn-secondary mt-4" style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
 
-                    <div class="form-group">
-                        <label for="carreraSelect">2. Selecciona tu Carrera:</label>
-                        <select id="carreraSelect" name="area" required disabled>
-                            <option value="">-- Primero selecciona un plantel --</option>
-                        </select>
-                    </div>
+            <div class="card career-card lic">
+                <div
+                    style="background: #fff3e0; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🍳</div>
+                <h3>Gastronomía y Turismo</h3>
+                <p>Excelencia en hospitalidad</p>
+                <a href="gastronomia-turismo.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
 
-                    <button type="submit" class="btn-submit" id="submitBtn">Enviar Solicitud</button>
-                </form>
-                <div id="mensajeExito">✓ ¡Información registrada con éxito! En breve te contactaremos.</div>
+            <div class="card career-card lic">
+                <div
+                    style="background: #e1f5fe; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    📊</div>
+                <h3>Administración</h3>
+                <p>Gestión estratégica de negocios</p>
+                <a href="administracion.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card lic">
+                <div
+                    style="background: #e8f5e9; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    💰</div>
+                <h3>Contaduría</h3>
+                <p>Liderazgo financiero y fiscal</p>
+                <a href="contaduria.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card lic">
+                <div
+                    style="background: #f1f8e9; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🏛️</div>
+                <h3>Arquitectura</h3>
+                <p>Diseño de espacios innovadores</p>
+                <a href="arquitectura.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card lic">
+                <div
+                    style="background: #e0f2f1; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🌡️</div>
+                <h3>Enfermería</h3>
+                <p>Cuidado profesional de la salud</p>
+                <a href="enfermeria.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card lic">
+                <div
+                    style="background: #fffde7; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🍎</div>
+                <h3>Nutrición</h3>
+                <p>Ciencia de la alimentación humana</p>
+                <a href="nutricion.html" class="btn btn-secondary mt-4" style="width:100%; justify-content: center;">Ver
+                    Detalles</a>
+            </div>
+
+            <div class="card career-card lic">
+                <div
+                    style="background: #fce4ec; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🌍</div>
+                <h3>Negocios Internacionales</h3>
+                <p>Competitividad global</p>
+                <a href="#" class="btn btn-secondary mt-4" style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <!-- Ingenierías -->
+            <div class="card career-card ing">
+                <div
+                    style="background: #efebe9; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🏗️</div>
+                <h3>Ingeniería Civil</h3>
+                <p>Construyendo el entorno físico</p>
+                <a href="ing-civil.html" class="btn btn-secondary mt-4" style="width:100%; justify-content: center;">Ver
+                    Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #fff3e0; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    ⚡</div>
+                <h3>Ing. Electromecánica</h3>
+                <p>Sistemas mecánicos y eléctricos</p>
+                <a href="ing-electromecanica.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #f1f8e9; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    📈</div>
+                <h3>Ing. Gestión Empresarial</h3>
+                <p>Estrategia técnica y negocios</p>
+                <a href="ing-gestion-empresarial.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #e8eaf6; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🏭</div>
+                <h3>Ingeniería Industrial</h3>
+                <p>Optimización de procesos globales</p>
+                <a href="ing-industrial.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #f0f4c3; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🚜</div>
+                <h3>Ing. Innovación Agrícola</h3>
+                <p>Tecnología para el campo sustentable</p>
+                <a href="ing-innovacion-agricola.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #fff9c4; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🧪</div>
+                <h3>Ing. Industrias Alimentarias</h3>
+                <p>Ciencia y tecnología de alimentos</p>
+                <a href="ing-innovacion-alimenticia.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #e0f7fa; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🚚</div>
+                <h3>Ing. Logística</h3>
+                <p>Eficiencia en cadena de suministro</p>
+                <a href="ing-logistica.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #eceff1; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🚗</div>
+                <h3>Ing. Mecánica Automotriz</h3>
+                <p>Ingeniería vehicular de vanguardia</p>
+                <a href="ing-mecanica-automotriz.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #cfd8dc; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    ⚙️</div>
+                <h3>Ingeniería Mecánica</h3>
+                <p>Diseño industrial y potencia</p>
+                <a href="ing-mecanica.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #ede7f6; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🧴</div>
+                <h3>Ingeniería en Plásticos</h3>
+                <p>Transformación técnica polimérica</p>
+                <a href="ing-plasticos.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #e0f2f1; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🧪</div>
+                <h3>Ingeniería Química</h3>
+                <p>Procesos moleculares industriales</p>
+                <a href="ing-quimica.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #e8eaf6; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    💻</div>
+                <h3>Ing. en Sistemas</h3>
+                <p>Arquitectura de software avanzada</p>
+                <a href="ing-sistemas.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card ing">
+                <div
+                    style="background: #e1f5fe; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    📡</div>
+                <h3>Ingeniería en TICs</h3>
+                <p>Redes y ciberseguridad global</p>
+                <a href="ing-tic.html" class="btn btn-secondary mt-4" style="width:100%; justify-content: center;">Ver
+                    Detalles</a>
+            </div>
+
+            <!-- Informatica as special cases -->
+            <div class="card career-card lic">
+                <div
+                    style="background: #e0f7fa; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    🖥️</div>
+                <h3>Informática</h3>
+                <p>Innovación tecnológica y datos</p>
+                <a href="informatica.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
+            </div>
+
+            <div class="card career-card lic">
+                <div
+                    style="background: #e3f2fd; height: 120px; display: flex; align-items: center; justify-content: center; font-size: 3rem;">
+                    📈</div>
+                <h3>Informática Administrativa</h3>
+                <p>Gestión y tecnología financiera</p>
+                <a href="informatica-administrativa.html" class="btn btn-secondary mt-4"
+                    style="width:100%; justify-content: center;">Ver Detalles</a>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer>
-        <p><strong>Universidad Mexiquense del Bicentenario</strong></p>
-        <p>Atención: 55 98 13 66 92 | <a href="mailto:convocatoria@umb.mx">convocatoria@umb.mx</a></p>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Universidad Mexiquense del Bicentenario</p>
+                <p class="footer-logo">Gobierno del Estado de México</p>
+            </div>
+        </div>
     </footer>
 
     <script>
-        const ofertaEducativa = {
-            "UES Amatepec": ["Ingeniería en Innovación Agrícola Sustentable"],
-            "UES Acambay": ["Licenciatura en Nutrición", "Ingeniería Mecánica"],
-            "UES Almoloya de Alquisiras": ["Ingeniería en Sistemas Computacionales", "Licenciatura en Administración"],
-            "UES Atenco": ["Licenciatura en Derecho", "Ingeniería Industrial", "Ingeniería en Tecnologías de la Información y Comunicaciones"],
-            "UES Chalco": ["Licenciatura en Administración", "Licenciatura en Contaduría"],
-            "UES Coatepec Harinas": ["Licenciatura en Contaduría", "Licenciatura en Enfermería", "Ingeniería En Innovación Agrícola Sustentable"],
-            "UES Ecatepec": ["Ingeniería en Logística y Distribución", "Ingeniería en Gestión Empresarial", "Licenciatura en Derecho", "Licenciatura en Informática Administrativa y Financiera"],
-            "UES El Oro": ["Ingeniería Civil", "Licenciatura en Nutrición", "Licenciatura en Enfermería", "Licenciatura en Gastronomía y Turismo Sustentable"],
-            "UES Hueypoxtla": ["Licenciatura en Contaduría", "Licenciatura en Derecho"],
-            "UES Huixquilucan": ["Licenciatura en Arquitectura", "Licenciatura en Contaduría", "Licenciatura en Informática"],
-            "UES Ixtapaluca": ["Ingeniería en Innovación Alimenticia", "Licenciatura en Derecho", "Licenciatura en Nutrición", "Licenciatura en Informática Administrativa y Financiera", "Ingeniería En Innovación Agrícola Sustentable"],
-            "UES Ixtlahuaca": ["Ingeniería Mecánica", "Licenciatura en Administración", "Licenciatura en Informática", "Licenciatura en Nutrición"],
-            "UES Jilotepec": ["Ingeniería Mecánica", "Licenciatura en Arquitectura", "Licenciatura en Contaduría", "Licenciatura en Enfermería", "Licenciatura en Psicología Industrial"],
-            "UES Jiquipilco": ["Licenciatura en Arquitectura", "Ingeniería en Gestión Empresarial", "Ingeniería en Sistemas Computacionales"],
-            "UES La Paz": ["Licenciatura en Administración", "Licenciatura en Derecho", "Licenciatura en Psicología Industrial"],
-            "UES Lerma": ["Ingeniería en Plásticos", "Ingeniería Industrial", "Licenciatura en Contaduría", "Licenciatura en Nutrición", "Maestría en Ciencias para la Paz"],
-            "UES Luvianos": ["Ingeniería Industrial"],
-            "UES Morelos": ["Ingeniería Electromecánica", "Ingeniería en Innovación Agrícola Sustentable"],
-            "UES San José del Rincón": ["Ingeniería en Innovación Agrícola Sustentable", "Ingeniería en Sistemas Computacionales", "Licenciatura en Contaduría"],
-            "UES Sultepec": ["Licenciatura en Contaduría", "Licenciatura en Enfermería"],
-            "UES Tecámac": ["Licenciatura en Contaduría", "Licenciatura en Informática"],
-            "UES Tejupilco": ["Licenciatura en Arquitectura", "Licenciatura en Nutrición"],
-            "UES Temascalcingo": ["Licenciatura en Administración", "Licenciatura en Informática Administrativa y Financiera", "Licenciatura en Psicología Industrial", "Ingeniería en Logística y Distribución"],
-            "UES Temoaya": ["Licenciatura en Contaduría", "Licenciatura en Enfermería", "Licenciatura en Informática"],
-            "UES Tenango del Valle": ["Licenciatura en Administración", "Licenciatura en Nutrición", "Ingeniería en Sistemas Computacionales"],
-            "UES Tepotzotlán": ["Ingeniería en Tecnologías de la Información y Comunicaciones", "Ingeniería en Logística y Distribución", "Licenciatura en Administración"],
-            "UES Teoloyucan": ["Ingeniería en Gestión Empresarial", "Licenciatura en Psicología Industrial"],
-            "UES Tlatlaya": ["Ingeniería Civil", "Licenciatura en Contaduría", "Licenciatura en Enfermería"],
-            "UES Tultepec": ["Licenciatura en Informática Administrativa y Financiera", "Licenciatura en Enfermería", "Licenciatura en Nutrición", "Ingeniería en Logística y Distribución"],
-            "UES Tultitlán": ["Ingeniería Civil", "Ingeniería Química", "Licenciatura en Contaduría", "Licenciatura en Psicología Industrial"],
-            "UES Villa del Carbón": ["Licenciatura en Enfermería", "Licenciatura en Nutrición", "Licenciatura en Gastronomía y Turismo Sustentable"],
-            "UES Villa Victoria": ["Licenciatura en Contaduría", "Licenciatura en Derecho", "Licenciatura en Enfermería", "Licenciatura en Informática", "Licenciatura en Psicología Industrial"],
-            "UES Xalatlaco": ["Ingeniería en Gestión Empresarial", "Ingeniería en Mecánica Automotriz", "Licenciatura en Psicología Industrial"],
-            "UES para Adultos y Adultos Mayores Ecatepec": ["Licenciatura en Derecho", "Licenciatura en Administración", "Licenciatura en Psicología Industrial"]
-        };
+        function filterCarreras(category) {
+            const cards = document.querySelectorAll('.career-card');
+            const btns = document.querySelectorAll('.tab-btn');
 
-        const uesSelect = document.getElementById('uesSelect');
-        const carreraSelect = document.getElementById('carreraSelect');
+            btns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
 
-        // Poblado inicial de Planteles
-        Object.keys(ofertaEducativa).sort().forEach(ues => {
-            let option = document.createElement('option');
-            option.value = ues;
-            option.textContent = ues;
-            uesSelect.appendChild(option);
-        });
-
-        // Lógica de Selects Dependientes
-        uesSelect.addEventListener('change', function() {
-            const uesSeleccionada = this.value;
-            carreraSelect.innerHTML = '<option value="">-- Selecciona una carrera --</option>';
-            
-            if(uesSeleccionada) {
-                carreraSelect.disabled = false;
-                ofertaEducativa[uesSeleccionada].forEach(carrera => {
-                    let option = document.createElement('option');
-                    option.value = carrera;
-                    option.textContent = carrera;
-                    carreraSelect.appendChild(option);
-                });
-            } else {
-                carreraSelect.disabled = true;
-                carreraSelect.innerHTML = '<option value="">-- Primero selecciona un plantel --</option>';
-            }
-        });
-
-        // Envío de Formulario a Google Sheets
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwmKKHAuR-Yc_XiWkRiFi4FYktl0WyO_j9xomRqEwnWjc6hMYmtvWiw5z6KrFzychlU/exec';
-        const form = document.getElementById('umbForm');
-        const btn = document.getElementById('submitBtn');
-        const msg = document.getElementById('mensajeExito');
-
-        form.addEventListener('submit', e => {
-            e.preventDefault();
-            btn.disabled = true;
-            btn.innerText = 'ENVIANDO...';
-
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    btn.disabled = false;
-                    btn.innerText = 'ENVIAR SOLICITUD';
-                    msg.style.display = 'block';
-                    form.reset();
-                    carreraSelect.disabled = true;
-                    carreraSelect.innerHTML = '<option value="">-- Primero selecciona un plantel --</option>';
-                    setTimeout(() => { msg.style.display = 'none'; }, 8000);
-                })
-                .catch(error => {
-                    btn.disabled = false;
-                    btn.innerText = 'REINTENTAR ENVÍO';
-                    alert('Hubo un problema al enviar tus datos. Por favor, revisa tu conexión e inténtalo de nuevo.');
-                    console.error('Error!', error.message);
-                });
-        });
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = card.classList.contains(category) ? 'block' : 'none';
+                }
+            });
+        }
     </script>
 </body>
 
 </html>
-
